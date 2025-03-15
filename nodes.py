@@ -1,7 +1,7 @@
 import torch
 import numpy as np
 from PIL import Image
-import ollama
+from ollama_query import ollama_query
 
 def get_ollama_models():
     models = ollama.list()
@@ -64,47 +64,14 @@ class QueryOllama:
     CATEGORY = "LLM"
     TITLE = "Query Ollama"
 
-    
-    def query_ollama(self, model, prompt, system_message=None, verbose=False, host="localhost", port=11434):
-        ollama.api_host = f"http://{host}:{port}"
-        messages = [{"role": "user", "content": prompt}]
-        if system_message:
-            messages.insert(0,{"role": "system", "content": system_message})
-
-        result = ollama.chat(
-            model=model,  # Replace with the model you're using
-            messages=messages
-        )
-        response = result['message']['content']
-        if verbose: self.pretty_print_prompt(prompt, system_message, response)
-        return response
-
-    def pretty_print_prompt(self, prompt, system_message, response):
-        print("-------SYSTEM MESSAGE--------")
-        print(system_message)
-        print("----------PROMPT---------")
-        print(prompt)
-        print("----------RESPONSE---------")
-        print(response)
-        print("\n\n")
-        if system_message:
-            print(f"Estimated tokens: {self.estimate_token_length(system_message) + self.estimate_token_length(prompt)}")
-        else:
-            print(f"Estimated tokens: {self.estimate_token_length(prompt)}")
-
-    def estimate_token_length(self, text: str) -> int:
-        """Estimate the number of tokens in a string."""
-        avg_chars_per_token = 4
-        return max(1, len(text) // avg_chars_per_token)
-
     def process(self, model: str, prompt: str):
         """
         Query Ollama with a given prompt.
         """
-        response = self.query_ollama(model, prompt, verbose=True, host="10.0.0.5")
-        print(f"HELLO: {response}")
+        response = ollama_query("gemma3:1b", prompt, verbose=True, host="10.0.0.2")
 
         return (response,)
+
 
 
 # Register node in ComfyUI

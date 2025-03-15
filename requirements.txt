@@ -1,1 +1,1 @@
-ollama
+git+https://github.com/saltchicken/ollama_query
