@@ -3,6 +3,10 @@ import numpy as np
 from PIL import Image
 import ollama
 
+def get_ollama_models():
+    models = ollama.list()
+    return [model["model"] for model in models.get("models", [])]
+
 class ImageGrayscaleNode:
     @classmethod
     def INPUT_TYPES(cls):
@@ -50,7 +54,7 @@ class QueryOllama:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "model": (ollama.list()),
+                "model": (get_ollama_models(),),
                 "prompt": ("STRING", {"default": "Hello, world!"}),
             },
         }
