@@ -93,7 +93,7 @@ class QueryOllama:
         """
         Query Ollama with a given prompt.
         """
-        response = self.query_ollama("gemma3", prompt, verbose=True)
+        response = self.query_ollama("gemma3", prompt, verbose=True, host="10.0.0.5")
 
         return (response,)
 
