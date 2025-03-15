@@ -15,7 +15,7 @@ class OllamaQuery:
             },
         }
 
-    RETURN_TYPES = ("STRING",)
+    RETURN_TYPES = ("STRING", "STRING")
     FUNCTION = "process"
     CATEGORY = "LLM"
     TITLE = "Ollama Query"
@@ -24,9 +24,10 @@ class OllamaQuery:
         """
         Query Ollama with a given prompt.
         """
-        response = ollama_query("gemma3:1b", prompt, host="10.0.0.2")
+        response, debug_text = ollama_query("gemma3:1b", prompt, host="10.0.0.2")
 
-        return (response,)
+        return (response, debug_text)
+
 
 
 
