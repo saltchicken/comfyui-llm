@@ -94,6 +94,7 @@ class QueryOllama:
         Query Ollama with a given prompt.
         """
         response = self.query_ollama("test", prompt, verbose=True, host="10.0.0.5")
+        print(f"HELLO: {response}")
 
         return (response,)
 
