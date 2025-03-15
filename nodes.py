@@ -55,6 +55,7 @@ class QueryOllama:
         return {
             "required": {
                 # "model": (get_ollama_models(),),
+                "model": ("STRING", {"default": "gemma3:1b"}),
                 "prompt": ("STRING", {"default": "Hello, world!"}),
             },
         }
