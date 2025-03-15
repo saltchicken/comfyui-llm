@@ -14,7 +14,7 @@ class OllamaQuery:
                 "system_message": ("STRING", {"default": "You are a helpful assistant."}),
                 "prompt": ("STRING", {"default": "Hello, world!"}),
                 "host"  : ("STRING", {"default": "localhost"}),
-                "port" : ("INT", {"default": 11434}),
+                "port" : ("STRING", {"default": 11434}),
             },
         }
 
@@ -23,7 +23,7 @@ class OllamaQuery:
     CATEGORY = "LLM"
     TITLE = "Ollama Query"
 
-    def process(self, model: str, prompt: str):
+    def process(self, model: str, system_message: str, prompt: str, host: str, port: str):
         """
         Query Ollama with a given prompt.
         """
