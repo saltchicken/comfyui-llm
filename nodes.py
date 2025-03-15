@@ -11,7 +11,10 @@ class OllamaQuery:
             "required": {
                 # "model": (get_ollama_models(),),
                 "model": ("STRING", {"default": "gemma3:1b"}),
+                "system_message": ("STRING", {"default": "You are a helpful assistant."}),
                 "prompt": ("STRING", {"default": "Hello, world!"}),
+                "host"  : ("STRING", {"default": "localhost"}),
+                "port" : ("INT", {"default": 11434}),
             },
         }
 
@@ -24,12 +27,9 @@ class OllamaQuery:
         """
         Query Ollama with a given prompt.
         """
-        response, debug_text = ollama_query("gemma3:1b", prompt, host="10.0.0.2")
+        response, debug_text = ollama_query(model=model, prompt=prompt, system_message=system_message, host=host, port=port)
 
         return (response, debug_text)
-
-
-
 
 # Register node in ComfyUI
 NODE_CLASS_MAPPINGS = {
