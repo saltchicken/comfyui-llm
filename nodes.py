@@ -50,6 +50,7 @@ class QueryOllama:
     def INPUT_TYPES(cls):
         return {
             "required": {
+                "model": (ollama.list()),
                 "prompt": ("STRING", {"default": "Hello, world!"}),
             },
         }
