@@ -82,7 +82,10 @@ class QueryOllama:
         print("----------RESPONSE---------")
         print(response)
         print("\n\n")
-        print(f"Estimated tokens: {self.estimate_token_length(system_message) + self.estimate_token_length(prompt)}")
+        if system_message:
+            print(f"Estimated tokens: {self.estimate_token_length(system_message) + self.estimate_token_length(prompt)}")
+        else:
+            print(f"Estimated tokens: {self.estimate_token_length(prompt)}")
 
     def estimate_token_length(self, text: str) -> int:
         """Estimate the number of tokens in a string."""
