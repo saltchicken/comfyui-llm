@@ -48,7 +48,3 @@ class ImageGrayscaleNode:
 NODE_CLASS_MAPPINGS = {
     "ImageGrayscaleNode": ImageGrayscaleNode
 }
-
-NODE_DISPLAY_NAME_MAPPINGS = {
-    "ImageGrayscaleNode": "Convert to Grayscale"
-}
