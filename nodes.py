@@ -97,11 +97,11 @@ class QueryOllama:
         avg_chars_per_token = 4
         return max(1, len(text) // avg_chars_per_token)
 
-    def process(self, prompt: str):
+    def process(self, model: str, prompt: str):
         """
         Query Ollama with a given prompt.
         """
-        response = self.query_ollama("test", prompt, verbose=True, host="10.0.0.5")
+        response = self.query_ollama(model, prompt, verbose=True, host="10.0.0.5")
         print(f"HELLO: {response}")
 
         return (response,)
