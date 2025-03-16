@@ -1,1 +1,2 @@
 git+https://github.com/saltchicken/ollama_query
+git_https://github.com/saltchicken/rag_milvus
