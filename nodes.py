@@ -49,6 +49,7 @@ class MilvusQuery:
         }
 
     RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("knowledge_string",)
     FUNCTION = "process"
     CATEGORY = "LLM"
     TITLE = "Milvus Query"
