@@ -129,7 +129,9 @@ class ShowTextTEST:
                     (x for x in workflow["nodes"] if str(x["id"]) == str(unique_id[0])),
                     None,
                 )
+                print(node)
                 if node:
+                    print(node["widgets_values"])
                     node["widgets_values"] = [text]
 
         return {"ui": {"text": text}, "result": (text,)}
