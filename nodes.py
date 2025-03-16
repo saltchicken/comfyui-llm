@@ -1,5 +1,6 @@
 from ollama_query import ollama_query
 import rag_milvus
+import gui
 
 # def get_ollama_models():
 #     models = ollama.list()
@@ -91,6 +92,29 @@ class ConcatenateStrings:
 
     def process(self, string1, string2):
         return (string1 + "\n" + string2,)
+
+class ShowText:
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "text": ("STRING", {"default": ""}),
+            },
+        }
+    RETURN_TYPES = ("STRING",)
+    FUNCTION = "process"
+    CATEGORY = "LLM"
+    TITLE = "Show Text"
+
+    def process(self, text):
+        if hasattr(self, "node"):
+            print("Node was HERE --------------------------------")
+            self.node.set_text(text)
+        return (text, )
+
+    def create_ui(self):
+        self.node = gui.TextBox()
+        return self.node
 
 # Register node in ComfyUI
 NODE_CLASS_MAPPINGS = {
