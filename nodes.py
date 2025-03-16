@@ -1,4 +1,5 @@
 from ollama_query import ollama_query
+import rag_milvus
 
 # def get_ollama_models():
 #     models = ollama.list()
@@ -37,8 +38,8 @@ class OllamaQuery:
 class MilvusQuery:
     def __init__(self):
         super().__init__()
+        self.rag = rag_milvus.Rag()
 
-        print("MILVUS QUERY INITIALIZED")
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -57,7 +58,8 @@ class MilvusQuery:
         Query Milvus with a given prompt.
         """
 
-        return (query,)
+        knowledge = self.rag.search_knowledge(query, 0.5)
+        return (repr(knowledge),)
 
 # Register node in ComfyUI
 NODE_CLASS_MAPPINGS = {
