@@ -54,6 +54,7 @@ class MilvusQuery:
         return {
             "required": {
                 "query": ("STRING", {"default": ""}),
+                "threshold": ("STRING", {"default": 0.5}),
             },
         }
 
@@ -63,12 +64,12 @@ class MilvusQuery:
     CATEGORY = "LLM"
     TITLE = "Milvus Query"
 
-    def process(self, query: str):
+    def process(self, query: str, threshold: float):
         """
         Query Milvus with a given prompt.
         """
 
-        knowledge = self.rag.search_knowledge(query, 0.5)
+        knowledge = self.rag.search_knowledge(query, threshold)
         # knowledge_string = "\n".join(knowledge)
         # knowledge_string = "\n".join(map(str, knowledge))
         knowledge_string = "\n".join(f"<knowledge>{item}</knowledge>" for item in knowledge)
