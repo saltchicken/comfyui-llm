@@ -17,6 +17,7 @@ class OllamaQuery:
                 "host"  : ("STRING", {"default": "localhost"}),
                 "port" : ("STRING", {"default": 11434}),
                 "temperature" : ("STRING",),
+                "seed" : ("STRING",),
             },
         }
 
