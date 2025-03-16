@@ -38,7 +38,7 @@ class OllamaQuery:
 class MilvusQuery:
     def __init__(self):
         super().__init__()
-        self.rag = rag_milvus.Rag()
+        self.rag = rag_milvus.Rag(host = "10.0.0.7")
 
     @classmethod
     def INPUT_TYPES(cls):
