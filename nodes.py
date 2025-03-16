@@ -92,7 +92,7 @@ class ConcatenateStrings:
     def process(self, string1, string2):
         return (string1 + "\n" + string2,)
 
-class ShowText:
+class ShowTextTEST:
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -109,7 +109,7 @@ class ShowText:
     RETURN_TYPES = ("STRING",)
     FUNCTION = "notify"
     OUTPUT_NODE = True
-    TITLE = "Show Text"
+    TITLE = "Show TextTEST"
 
     CATEGORY = "LLM"
 
@@ -123,6 +123,7 @@ class ShowText:
             ):
                 print("Error: extra_pnginfo[0] is not a dict or missing 'workflow' key")
             else:
+                print("I WAS HERE")
                 workflow = extra_pnginfo[0]["workflow"]
                 node = next(
                     (x for x in workflow["nodes"] if str(x["id"]) == str(unique_id[0])),
@@ -138,5 +139,5 @@ NODE_CLASS_MAPPINGS = {
     "OllamaQuery": OllamaQuery,
     "MilvusQuery": MilvusQuery,
     "ConcatenateStrings": ConcatenateStrings,
-    "ShowText": ShowText,
+    "ShowText": ShowTextTEST,
 }
