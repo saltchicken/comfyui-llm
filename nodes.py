@@ -34,7 +34,33 @@ class OllamaQuery:
 
         return (response, debug_text)
 
+class MilvusQuery:
+    def __init__(self):
+        super().__init__()
+
+        print("MILVUS QUERY INITIALIZED")
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "query": ("STRING", {"default": ""}),
+            },
+        }
+
+    RETURN_TYPES = ("STRING",)
+    FUNCTION = "process"
+    CATEGORY = "LLM"
+    TITLE = "Milvus Query"
+
+    def process(self, query: str):
+        """
+        Query Milvus with a given prompt.
+        """
+
+        return (query,)
+
 # Register node in ComfyUI
 NODE_CLASS_MAPPINGS = {
     "OllamaQuery": OllamaQuery,
+    "MilvusQuery": MilvusQuery,
 }
