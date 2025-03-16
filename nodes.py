@@ -66,8 +66,26 @@ class MilvusQuery:
         knowledge_string = "<knowledge_base>\n" + knowledge_string + "\n</knowledge_base>"
         return (knowledge_string,)
 
+class ConcatenateStrings:
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "string1": ("STRING", {"default": ""}),
+                "string2": ("STRING", {"default": ""}),
+            },
+        }
+    RETURN_TYPES = ("STRING",)
+    FUNCTION = "process"
+    CATEGORY = "LLM"
+    TITLE = "Concatenate Strings"
+
+    def process(self, string1, string2):
+        return (string1 + "\n" + string2,)
+
 # Register node in ComfyUI
 NODE_CLASS_MAPPINGS = {
     "OllamaQuery": OllamaQuery,
     "MilvusQuery": MilvusQuery,
+    "ConcatenateStrings": ConcatenateStrings,
 }
