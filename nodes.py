@@ -63,6 +63,7 @@ class MilvusQuery:
         # knowledge_string = "\n".join(knowledge)
         # knowledge_string = "\n".join(map(str, knowledge))
         knowledge_string = "\n".join(f"<knowledge>{item}</knowledge>" for item in knowledge)
+        knowledge_string = "<knowledge_base>\n" + knowledge_string + "\n</knowledge_base>"
         return (knowledge_string,)
 
 # Register node in ComfyUI
