@@ -25,7 +25,7 @@ class OllamaQuery:
     CATEGORY = "LLM"
     TITLE = "Ollama Query"
 
-    def process(self, model: str, system_message: any, prompt: str, host: str, port: str, temperature: str):
+    def process(self, model: str, system_message: any, prompt: str, host: str, port: str, temperature: any, seed: any):
         """
         Query Ollama with a given prompt.
         """
@@ -35,7 +35,9 @@ class OllamaQuery:
         if temperature == "":
             temperature = None
 
-        print(f"Temperature: {temperature}")
+        if seed == "":
+            print("SETTING SEED TO NONE")
+            seed = None
 
         response, debug_text = ollama_query(model=model, prompt=prompt, system_message=system_message, host=host, port=port, temperature=temperature)
 
