@@ -132,7 +132,7 @@ class ShowTextTEST:
                 print(node)
                 if node:
                     print(node["widgets_values"])
-                    node["widgets_values"] = text
+                    node["widgets_values"] = [[[text]]]
 
         return {"ui": {"text": text}, "result": (text,)}
 
