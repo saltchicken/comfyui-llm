@@ -94,7 +94,7 @@ class ConcatenateStrings:
 
 class ShowText:
     @classmethod
-    def INPUT_TYPES(s):
+    def INPUT_TYPES(cls):
         return {
             "required": {
                 "text": ("STRING", {"forceInput": True}),
@@ -109,10 +109,9 @@ class ShowText:
     RETURN_TYPES = ("STRING",)
     FUNCTION = "notify"
     OUTPUT_NODE = True
-    OUTPUT_IS_LIST = (True,)
     TITLE = "Show Text"
 
-    CATEGORY = "utils"
+    CATEGORY = "LLM"
 
     def notify(self, text, unique_id=None, extra_pnginfo=None):
         if unique_id is not None and extra_pnginfo is not None:
