@@ -141,5 +141,5 @@ NODE_CLASS_MAPPINGS = {
     "OllamaQuery": OllamaQuery,
     "MilvusQuery": MilvusQuery,
     "ConcatenateStrings": ConcatenateStrings,
-    "ShowText": ShowTextTEST,
+    "ShowText|TEST": ShowTextTEST,
 }
