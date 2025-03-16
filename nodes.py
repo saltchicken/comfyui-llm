@@ -54,7 +54,7 @@ class MilvusQuery:
         return {
             "required": {
                 "query": ("STRING", {"default": ""}),
-                "threshold": ("STRING", {"default": 0.5}),
+                "threshold": ("FLOAT", {"default": 0.5}),
             },
         }
 
