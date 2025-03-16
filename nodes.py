@@ -59,8 +59,9 @@ class MilvusQuery:
         """
 
         knowledge = self.rag.search_knowledge(query, 0.5)
-        print(knowledge)
-        return (knowledge,)
+        knowledge_string = "\n".join(knowledge)
+        # knowledge_string = "\n".join(map(str, knowledge))
+        return (knowledge_string,)
 
 # Register node in ComfyUI
 NODE_CLASS_MAPPINGS = {
